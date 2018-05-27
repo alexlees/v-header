@@ -6,7 +6,18 @@
   "private": false,
   "files": [
     "package",
-    "README.md"
+    "README.md",
+    "qr.png"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexlees/v-header.git"
+  },
+  "keywords": [
+    "v-header",
+    "header",
+    "vue",
+    "components"
   ],
   "main": "package/index.js",
   "module": "package/src/index.js",

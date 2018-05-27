@@ -5,8 +5,8 @@
 > 移动端 Vue.js header 组件
 
 ***
-## Demo
-
+## [Demo](https://alexlees.github.io/v-header/dist/index.html)
+![qr](qr.png)
 
 ## Install
 

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="$style.comm">
     <header :class="{[$style.header]: true, [$style.fixed]: fixed, [$style.comm]: true}">
       <div :class="$style.left" @click="click">
         <slot name="left">
