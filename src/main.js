@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import App from './App'
-import Header, {VHeader} from 'v-header'
-console.log(VHeader)
+import Header, {VHeader} from './package/index'
+if (!VHeader) {
+  throw new Error(' VHeader ')
+}
 
 Vue.use(Header)
 Vue.config.productionTip = false
