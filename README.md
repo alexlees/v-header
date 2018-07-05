@@ -1,12 +1,10 @@
 # v-header
 ***
-> A Vue.js header component.
-
 > 移动端 Vue.js header 组件
 
 ***
-## [Demo](https://alexlees.github.io/v-header/dist/index.html)
-![qr](qr.png)
+## [Demo](https://alexlees.github.io)
+
 
 ## Install
 
@@ -18,26 +16,19 @@ yarn add v-header
 ***
 ## Usage
 ```javascript
-// main.js
-// global init component
+// 全局安装
 import Vue from 'vue'
-import VHeader from 'v-header'
+import Header from 'v-header'
 
-Vue.use(VHeader) // 全局安装 默认组件名称 v-backup
+Vue.use(Header) // 全局安装 默认组件名称 v-header
 
-new Vue({
-  el: '#app',
-  components: { App },
-  template: '<App/>'
-})
-// local init component
-// app.vue
-import { VHeader } from 'v-header'
+// 局部安装
+import { Header } from 'v-header'
 
 export default {
   name: 'App',
   components: {
-    [VHeader.name]: VHeader // 局部安装 推荐使用该形式 使用组件默认名称
+    [Header.name]: Header // 局部安装 推荐使用该形式 使用组件默认名称
   }
 }
 ```
@@ -46,7 +37,7 @@ export default {
 <!-- app.vue -->
 <template>
   <div id="app">
-    <v-header title="标题如果很长很长会出现点点点哟" fixed right-icon="close"></v-header> <!-- 将组件放在顶部 -->
+    <v-header title="这是标题"></v-header> <!-- 将组件放在顶部 -->
     <someThingYourComponents/>
   </div>
 </template>
@@ -65,8 +56,13 @@ export default {
 ***
 ## tips
 
-* 组件默认left插槽为'back' icon 点击触发回到上一页， 需要自定义点击反应请显示传递back为false并监听leftClick
-* 组件可选icon如下 back | close leftIcon必须传递以上出现的icon rightIcon可以传递''
+* 组件未实现fixed 功能需要你自行实现
+* 组件左侧slot在back=true时 显示后退icon 并且附带路由功能(在你安装vue-router的前提下)
+
+> 实现思路
+
+0. 使用flex布局 将组件置于顶部 其余部分flex: 1
+2. 使用fixed布局 覆盖组件css
 
 ***
 
@@ -74,10 +70,7 @@ export default {
 | name | desc | type | default | required |
 | :--: | :--: | ---: | :-----: | :------: |
 | title | 组件标题(可用slot自定义) | String | '' | false |
-| fixed | 组件是否固定在顶部 | Boolean | false | false |
-| back | 点击left是否使用默认操作 | Boolean | false | false |
-| leftIcon | leftIcon | String | 'back' | false |
-| rightIcon | rightIcon | String | '' | false |
+| back | 点击left是否使用默认操作 | Boolean | true | false |
 
 ***
 
@@ -85,21 +78,20 @@ export default {
 | name | desc | info |
 | :--: | :--: | ---: |
 | default | title插槽 | 不传递会使用组件 title |
-| left | left插槽 | 不传递会使用组件默认leftIcon |
-| right | right插槽 | 不传递会使用组件默认rightIcon |
+| left | left插槽 | 当back(props)为true时默认显示后退icon |
+| right | right插槽 | null |
 
 ***
 
 ## Event
 | name | desc | param |
 | :--: | :--: | ---: |
-| leftClick | 点击left触发(仅在back为false时触发) | null |
-| rightClick | 点击right触发 | null |
-
+| click-left | 点击left触发(仅在back为false时触发) | null |
+| click-right | 点击right触发 | null |
+| click-title | 点击right触发 | null |
 ***
 
 ## TODO
-- [  ] 更多内置icon
 
 ***
 
